@@ -1,0 +1,95 @@
+; vim:ft=nsis
+
+RequestExecutionLevel admin
+
+!define OUTPUT_PATH "$output_path$"
+!define ROOT_PATH "$root_path$"
+!define PRODUCT_NAME "Cocos2D JavaScript"
+!define PRODUCT_VERSION "$version$"
+!define PRODUCT_WEB_SITE "http://cocos2d-javascript.org/"
+!define PRODUCT_DIR_REGKEY "Software\Microsoft\Windows\CurrentVersion\App Paths\Create project.exe"
+!define PRODUCT_UNINST_KEY "Software\Microsoft\Windows\CurrentVersion\Uninstall\${PRODUCT_NAME}"
+!define PRODUCT_UNINST_ROOT_KEY "HKLM"
+
+; MUI 1.67 compatible ------
+!include "MUI.nsh"
+
+; MUI Settings
+!define MUI_ABORTWARNING
+!define MUI_ICON "${NSISDIR}\Contrib\Graphics\Icons\modern-install.ico"
+!define MUI_UNICON "${NSISDIR}\Contrib\Graphics\Icons\modern-uninstall.ico"
+
+; Welcome page
+!insertmacro MUI_PAGE_WELCOME
+; License page
+!insertmacro MUI_PAGE_LICENSE "${ROOT_PATH}\LICENSE"
+; Directory page
+!insertmacro MUI_PAGE_DIRECTORY
+; Instfiles page
+!insertmacro MUI_PAGE_INSTFILES
+; Finish page
+!define MUI_FINISHPAGE_SHOWREADME "$INSTDIR\README.txt"
+!insertmacro MUI_PAGE_FINISH
+
+; Uninstaller pages
+!insertmacro MUI_UNPAGE_INSTFILES
+
+; Language files
+!insertmacro MUI_LANGUAGE "English"
+
+; MUI end ------
+
+Name "${PRODUCT_NAME} ${PRODUCT_VERSION}"
+OutFile "${OUTPUT_PATH}\Install Cocos2D JavaScript ${PRODUCT_VERSION}.exe"
+InstallDir "$PROGRAMFILES\${PRODUCT_NAME}"
+InstallDirRegKey HKLM "${PRODUCT_DIR_REGKEY}" ""
+ShowInstDetails show
+ShowUnInstDetails show
+
+Section "MainSection" SEC01
+$install_file_list$
+
+  ; Start menu shortcuts
+  SetOverwrite ifnewer
+  CreateDirectory "$SMPROGRAMS\Cocos2D JavaScript"
+  CreateShortCut "$SMPROGRAMS\Cocos2D JavaScript\Create new project.lnk" "$INSTDIR\bin\Create project.exe"
+  CreateShortCut "$SMPROGRAMS\Cocos2D JavaScript\Compile project.lnk" "$INSTDIR\bin\Compile project.exe"
+  CreateShortCut "$SMPROGRAMS\Cocos2D JavaScript\Serve project.lnk" "$INSTDIR\bin\Serve project.exe"
+SectionEnd
+
+Section -AdditionalIcons
+  SetOutPath $INSTDIR
+  WriteIniStr "$INSTDIR\${PRODUCT_NAME}.url" "InternetShortcut" "URL" "${PRODUCT_WEB_SITE}"
+  CreateShortCut "$SMPROGRAMS\Cocos2D JavaScript\Website.lnk" "$INSTDIR\${PRODUCT_NAME}.url"
+  CreateShortCut "$SMPROGRAMS\Cocos2D JavaScript\Uninstall.lnk" "$INSTDIR\uninst.exe"
+SectionEnd
+
+Section -Post
+  WriteUninstaller "$INSTDIR\uninst.exe"
+  WriteRegStr HKLM "${PRODUCT_DIR_REGKEY}" "" "$INSTDIR\"
+  WriteRegStr ${PRODUCT_UNINST_ROOT_KEY} "${PRODUCT_UNINST_KEY}" "DisplayName" "$(^Name)"
+  WriteRegStr ${PRODUCT_UNINST_ROOT_KEY} "${PRODUCT_UNINST_KEY}" "UninstallString" "$INSTDIR\uninst.exe"
+  WriteRegStr ${PRODUCT_UNINST_ROOT_KEY} "${PRODUCT_UNINST_KEY}" "DisplayIcon" "$INSTDIR\bin\Create project.exe"
+  WriteRegStr ${PRODUCT_UNINST_ROOT_KEY} "${PRODUCT_UNINST_KEY}" "DisplayVersion" "${PRODUCT_VERSION}"
+  WriteRegStr ${PRODUCT_UNINST_ROOT_KEY} "${PRODUCT_UNINST_KEY}" "URLInfoAbout" "${PRODUCT_WEB_SITE}"
+SectionEnd
+
+
+Function un.onUninstSuccess
+  HideWindow
+  MessageBox MB_ICONINFORMATION|MB_OK "$(^Name) was successfully removed from your computer."
+FunctionEnd
+
+Function un.onInit
+  MessageBox MB_ICONQUESTION|MB_YESNO|MB_DEFBUTTON2 "Are you sure you want to completely remove $(^Name) and all of its components?" IDYES +2
+  Abort
+FunctionEnd
+
+Section Uninstall
+  RMDir /r "$SMPROGRAMS\Cocos2D JavaScript"
+  RMDir /r "$INSTDIR"
+
+  DeleteRegKey ${PRODUCT_UNINST_ROOT_KEY} "${PRODUCT_UNINST_KEY}"
+  DeleteRegKey HKLM "${PRODUCT_DIR_REGKEY}"
+  SetAutoClose true
+SectionEnd

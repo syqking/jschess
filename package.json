@@ -1,0 +1,19 @@
+{
+    "name": "Jschess",
+    "author": "",
+    "description": "",
+    "version": "0.0.1",
+    "homepage": "",
+
+    "engines": {
+        "node": ">= 0.4.0"
+    },
+
+    "repository": {
+    },
+
+    "dependencies": {
+        "jah": "~0.0.3"
+        "cocos2d": "~0.2.0-beta2"
+    }
+}

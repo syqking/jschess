@@ -1,0 +1,49 @@
+<!doctype html> 
+
+<html> 
+    <head> 
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8"> 
+        <title>中国象棋</title> 
+        <style type="text/css" media="screen"> 
+            body {
+                font-family: Helvetica, Arial, sans-serif;
+                font-size: 10pt;
+                background: #ddd;
+            }
+            h1 {
+                text-align: center;
+                text-shadow: 0 2px 1px #fff;
+            }
+            #jschess_app {
+                border: 1px solid #000;
+                width: 800px;
+                height: 600px;
+                margin: 0 auto;
+                -webkit-box-shadow: 0 3px 10px rgba(0, 0, 0, 0.75);
+                -moz-box-shadow:    0 3px 10px rgba(0, 0, 0, 0.75);
+                -o-box-shadow:      0 3px 10px rgba(0, 0, 0, 0.75);
+                box-shadow:         0 3px 10px rgba(0, 0, 0, 0.75);
+            }
+
+             /*-------------impromptu---------- */
+             .jqifade{ position: absolute; background-color:#333333}
+             div.jqi{ width: 400px; position: absolute; background-color: #ffffff; text-align: left; border: solid 1px #eeeeee; -moz-border-radius: 10px; -webkit-border-radius: 10px; padding: 7px; font-size:12px}
+             div.jqi .jqicontainer{ font-weight:500; }
+             div.jqi .jqiclose{ position: absolute; top: 4px; right: -2px; width: 18px; cursor: default; color: #bbbbbb; font-family: Verdana, Geneva, Arial, Helvetica, sans-serif; font-weight:bold }
+             div.jqi .jqimessage{ padding: 10px; line-height: 20px; color: #444444; }
+             div.jqi .jqibuttons{ text-align: right; padding: 5px 0 5px 0; border: solid 1px #eeeeee; background-color: #f4f4f4; }
+            div.jqi button{ padding: 3px 10px; margin: 0 10px; background-color: #2F6073; border: solid 1px #f4f4f4; color: #ffffff; font-weight: bold; font-size: 12px; }
+             div.jqi button:hover{ background-color: #728A8C; }
+             div.jqi button.jqidefaultbutton{ background-color: #BF5E26; }
+             .jqiwarning .jqi .jqibuttons{ background-color: #BF5E26; }
+             /*-------------------------------- */
+
+        </style>
+       
+        ${scripts}
+    </head> 
+    <body> 
+        <h1>中国象棋</h1> 
+       <div id="jschess_app">Jschess is loading...</div>
+    </body> 
+</html> 

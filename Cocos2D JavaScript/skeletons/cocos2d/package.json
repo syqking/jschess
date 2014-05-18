@@ -1,0 +1,19 @@
+{
+    "name": "${appname}",
+    "author": "",
+    "description": "",
+    "version": "0.0.1",
+    "homepage": "",
+
+    "engines": {
+        "node": ">= 0.4.0"
+    },
+
+    "repository": {
+    },
+
+    "dependencies": {
+        "jah": "~${jahVersion}"
+        "cocos2d": "~${cocosVersion}"
+    }
+}

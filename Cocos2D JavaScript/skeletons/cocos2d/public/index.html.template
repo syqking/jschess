@@ -1,0 +1,33 @@
+<!doctype html> 
+<html> 
+    <head> 
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8"> 
+        <title>${appname}</title> 
+        <style type="text/css" media="screen"> 
+            body {
+                font-family: Helvetica, Arial, sans-serif;
+                font-size: 10pt;
+                background: #ddd;
+            }
+            h1 {
+                text-align: center;
+                text-shadow: 0 2px 1px #fff;
+            }
+            #${filename}_app {
+                border: 1px solid #000;
+                width: 480px;
+                height: 320px;
+                margin: 0 auto;
+                -webkit-box-shadow: 0 3px 10px rgba(0, 0, 0, 0.75);
+                -moz-box-shadow:    0 3px 10px rgba(0, 0, 0, 0.75);
+                -o-box-shadow:      0 3px 10px rgba(0, 0, 0, 0.75);
+                box-shadow:         0 3px 10px rgba(0, 0, 0, 0.75);
+            }
+        </style>
+        ${scripts}
+    </head> 
+    <body> 
+        <h1>${appname}</h1> 
+       <div id="${filename}_app">${appname} is loading...</div>
+    </body> 
+</html> 

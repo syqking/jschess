@@ -1,0 +1,57 @@
+<pkgref spec="1.12" uuid="A454CAD4-FEB3-46E2-8D9A-DE4C53B68F07">
+    <config>
+        <identifier>org.cocos2d-javascript.Cocos2D-JavaScript.pkg</identifier>
+        <version>0.2</version>
+        <description>
+        </description>
+        <post-install type="none"/>
+        <requireAuthorization/>
+        <installFrom relative="true">../../</installFrom>
+        <installTo mod="true">/Library/Cocos2D-JavaScript</installTo>
+        <flags>
+            <mod>followSymbolicLinks</mod>
+        </flags>
+        <packageStore type="internal">
+        </packageStore>
+        <mod>locationType</mod>
+        <mod>scripts.postflight.path</mod>
+        <mod>installTo</mod>
+        <mod>scripts.postinstall.path</mod>
+        <mod>includeRoot</mod>
+        <mod>installTo.isRelativeType</mod>
+        <mod>installTo.isAbsoluteType</mod>
+        <mod>version</mod>
+        <mod>parent</mod>
+        <mod>installFrom.isRelativeType</mod>
+        <mod>scripts.postinstall.isRelativeType</mod>
+        <mod>requireAuthorization</mod>
+        <mod>relocatable</mod>
+        <mod>identifier</mod>
+        <mod>extraFiles</mod>
+        <mod>installTo.path</mod>
+        <mod>postInstall</mod>
+    </config>
+    <scripts>
+        <postflight relative="true" mod="true">osx-postflight.sh</postflight>
+    </scripts>
+    <contents>
+        <file-list>01cocos-contents.xml</file-list>
+        <component id="org.cocos2d-javascript.Cocos2D-JavaScript.pkg" path="build/cocos2d-javascript-v0.2.0-mac.pkg"/>
+        <filter>/CVS$</filter>
+        <filter>/\.svn$</filter>
+        <filter>/\.cvsignore$</filter>
+        <filter>/\.cvspass$</filter>
+        <filter>/\.DS_Store$</filter>
+        <filter>/\._.*</filter>
+        <filter>/\.git$</filter>
+        <filter>/\.gitmodules$</filter>
+        <filter>/\.gitignore$</filter>
+        <filter>/\.npmignore$</filter>
+        <filter>/support/distribution/build/</filter>
+        <filter>/support/node-builds/.*\.dll$</filter>
+        <filter>/support/node-builds/node-(linux|cygwin|sunos)</filter>
+        <filter>/docs</filter>
+        <filter>/tests/build</filter>
+    </contents>
+    <extra-files/>
+</pkgref>
