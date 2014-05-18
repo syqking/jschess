@@ -2,6 +2,8 @@ Jschess
 =======
 jschess is a Chinese Chess game with AI build with javascript and cocos2d-x
 
+![github](https://github.com/syqking/jschess/blob/master/src/resources/screenshot.png?raw=true "github") 
+
 Quick Start
 =======
 * Run the start_server.bat
