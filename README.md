@@ -7,6 +7,11 @@ Quick Start
 * Run the start_server.bat
 * Open your web browser and visit 127.0.0.1:4000
 
+Compile & Publish
+=======
+* Run the compile.bat
+* The compiled content will be in a directory named "build"
+
 License
 =======
 jschess is released under MIT license
