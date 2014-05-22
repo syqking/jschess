@@ -1,3 +1,0 @@
-{ "jahProject": { "version": "${jahVersion}" }
-, "libs": ["cocos2d"]
-}
